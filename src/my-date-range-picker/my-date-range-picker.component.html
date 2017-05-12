@@ -52,7 +52,7 @@
                 <tr *ngFor="let w of dates">
                     <td class="daycell daycellweeknbr" *ngIf="opts.showWeekNumbers&&opts.firstDayOfWeek==='mo'">{{w.weekNbr}}</td>
                     <td class="daycell" *ngFor="let d of w.week" [ngClass]="{'currmonth':d.cmo===currMonthId&&!d.disabled, 'range': isInRange(d)||d.range, 'disabled': d.disabled}" (click)="!d.disabled && onCellClicked(d);$event.stopPropagation()" (keydown)="onCellKeyDown($event, d)" (mouseenter)="onCellMouseEnter(d)" (mouseleave)="onCellMouseLeave()" tabindex="0">
-                        <div style="background-color:inherit" [ngClass]="{'prevmonth':d.cmo===prevMonthId, 'selectedday':beginDate.day===d.dateObj.day&&beginDate.month===d.dateObj.month&&beginDate.year===d.dateObj.year||endDate.day===d.dateObj.day&&endDate.month===d.dateObj.month&&endDate.year===d.dateObj.year, 'currmonth':d.cmo===currMonthId, 'nextmonth':d.cmo===nextMonthId, 'sunday':d.dayNbr===0&&opts.sunHighlight}">
+                        <div style="background-color:inherit" [ngClass]="{'prevmonth':d.cmo===prevMonthId, 'begindate':beginDate.day===d.dateObj.day, 'enddate':endDate.day===d.dateObj.day, 'selectedday':beginDate.day===d.dateObj.day&&beginDate.month===d.dateObj.month&&beginDate.year===d.dateObj.year||endDate.day===d.dateObj.day&&endDate.month===d.dateObj.month&&endDate.year===d.dateObj.year, 'currmonth':d.cmo===currMonthId, 'nextmonth':d.cmo===nextMonthId, 'sunday':d.dayNbr===0&&opts.sunHighlight}">
                             <span [ngClass]="{'currday':d.currDay&&opts.markCurrentDay, 'sundayDim': opts.sunHighlight && d.dayNbr === 0 && (d.cmo===prevMonthId || d.cmo===nextMonthId || d.disabled)}">{{d.dateObj.day}}</span>
                         </div>
                     </td>
